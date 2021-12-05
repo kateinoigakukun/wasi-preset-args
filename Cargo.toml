@@ -1,0 +1,14 @@
+[package]
+name = "wasi-preset-args"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+structopt = { version = "0.3", optional = true }
+
+[features]
+mkargs = ["structopt"]
+
+[[bin]]
+name = "wasi-mkargs"
+required-features = ["mkargs"]
