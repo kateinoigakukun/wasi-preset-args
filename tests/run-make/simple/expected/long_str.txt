@@ -1,0 +1,3 @@
+argc = 2
+argv[0] = long_str.wasm
+argv[1] = FOO_BAR_FIZZ_BUZZ_XXX_YYY_ZZZ

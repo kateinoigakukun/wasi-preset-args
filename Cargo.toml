@@ -4,11 +4,10 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-structopt = { version = "0.3", optional = true }
-
-[features]
-mkargs = ["structopt"]
+walrus = "0.19.0"
+anyhow = "1.0.0"
+clap = { optional = true, version = "3.0", features = ["derive"] }
 
 [[bin]]
-name = "wasi-mkargs"
-required-features = ["mkargs"]
+name = "wasi-preset-args"
+required-features = ["clap"]

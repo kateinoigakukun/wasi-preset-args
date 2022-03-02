@@ -1,0 +1,5 @@
+argc = 4
+argv[0] = foo_bar.wasm
+argv[1] = FOO
+argv[2] = BAR
+argv[3] = XXX

@@ -1,0 +1,5 @@
+argc = 4
+argv[0] = default.wasm
+argv[1] = FOO
+argv[2] = BAR
+argv[3] = XXX
