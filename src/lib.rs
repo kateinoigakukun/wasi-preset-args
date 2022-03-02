@@ -17,8 +17,7 @@
 //! $ wasmtime run ./my_program.wasm --arg3 # --arg1 --arg2 --arg3 is passed to the program
 //! ```
 
-use std::os::unix::ffi::OsStrExt;
-use std::{collections::HashMap, ffi::OsString, os::unix::prelude::OsStringExt};
+use std::{collections::HashMap, ffi::OsString};
 
 use walrus::{
     ir::{BinaryOp, LoadKind, MemArg, StoreKind, UnaryOp, Value},
@@ -38,7 +37,7 @@ impl PresetArgs {
     pub fn new(program_name: OsString, args: Vec<OsString>) -> Self {
         let args = args
             .into_iter()
-            .map(|arg| arg.into_vec())
+            .map(|arg| arg.to_string_lossy().as_bytes().to_vec())
             .collect::<Vec<_>>();
         Self {
             program_name,
@@ -361,7 +360,7 @@ impl PresetArgs {
                     store_string_at(
                         then,
                         memory.id(),
-                        self.program_name.as_bytes(),
+                        self.program_name.to_string_lossy().as_bytes(),
                         argv_buf,
                         self.preset_args_size(),
                     );
