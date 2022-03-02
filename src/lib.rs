@@ -482,6 +482,8 @@ fn store_string_at(
     offset: usize,
 ) {
     let mut written = 0;
+    // Put '\0' at the end of the string
+    let s = [s, &[0]].concat();
     for chunk_size in [8, 4, 2, 1] {
         let chunk_count = (s.len() - written) / chunk_size;
         for _ in 0..chunk_count {
